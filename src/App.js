@@ -1,21 +1,14 @@
 import React from 'react';
 import './App.css';
-import Axios from 'axios';
-import { appendApiKey } from './utils';
+import './font/css/all.css';
+import FrontPage from './components/FrontPage.js';
+import MainNav from './components/MainNav';
 
 const App = () => {
-  const url = appendApiKey("list");
-
-Axios.get(url)
-    .then((response)=>{
-      console.log(response);
-    })
-    .catch((error)=>{
-      console.log(error);
-    })
   return (
     <div className="App">
-        Happy shopping!
+      <MainNav />
+      <FrontPage />
     </div>
   )
 }
