@@ -1,0 +1,1 @@
+export const appendApiKey = link => `https://walmart.p.rapidapi.com/products/${link}?rapidapi-key=d8e4eb1d90msh937fd6c80779df9p167f6ejsn7713cc4b23a7`;
