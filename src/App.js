@@ -41,11 +41,11 @@ const App = () => {
   }
   return (
     <div className="App">
-      <MainNav category={departments}/>
+      <MainNav departments={departments}/>
       <FrontPage />
       <div className="Container">
         <Saving departments={departments}/>
-        {/* <Item category="Back to school" products={products}/> */}
+        <Item category="Back to school" products={products}/>
         <Category category={departments} />
       </div>
       

@@ -1,47 +1,28 @@
 import React from 'react'
 import './LowerNav.css';
 
-const LowerNav = ({category}) => {
+const LowerNav = ({departments}) => {
     return (
         <div className="LowerNav">
             <nav className="navbar navbar-expand-lg">
                 <div className="collapse navbar-collapse" id="navbarSupportedContent-333">
                     <ul className="navbar-nav mr-auto">
-
-                    <li className="nav-item dropdown">
-  <a className="nav-link dropdown-toggle">Dropdown</a>
-    <div className="dropdown-content">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#" classname="dropdown-submenu">Link 3</a>
-            <div className="dropdown-item">
-                <a href="#">link new</a>
-            </div>
-  </div>
-</li>
                         
-                        {/* <li className="nav-item dropdown">
+                        <li className="nav-item dropdown pointer">
                             <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="true"> <span className="nav-label">Departments</span> <span className="caret"></span>
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink-333">
                                 {
-                                    category.map( cat =>
-                                        <li className="dropdown-submenu "  key={cat.name}>
-                                            <a className="dropdown-item dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> 
-                                                <span className="nav-label" >{cat.name}</span><span class="caret"></span></a> 
-                                            <ul className="dropdown-menu dropdown-default"  aria-labelledby="navbarDropdownMenuLink-333">
-                                                {
-                                                    cat.departments.map( dep => (
-                                                        <li><a href="#" className="dropdown-item dropdown-toggle">dep.department.title</a></li>
-                                                    ))
-                                                }
-                                            </ul>
+                                    departments.map( dep =>
+                                        <li className="dropdown-item pointer"  key={dep.name}>
+                                            <a className="dropdown-item" href={"#"+dep.name}> 
+                                                <span className="nav-label" >{dep.name}</span><span class="caret"></span></a> 
                                         </li>
                                     )
                                 }
                             </ul>
-                        </li> */}
+                        </li>
                         <li className="nav-item active">
                             <a className="nav-link" href="#">Home
                             <span className="sr-only">(current)</span>

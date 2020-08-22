@@ -1,6 +1,5 @@
 import React from 'react';
 import './Category.css';
-import Category_item from './Category_item';
 import { buildUrl } from "../utils";
 
 const Category = ({category}) => {
@@ -9,7 +8,7 @@ const Category = ({category}) => {
         <div className="category">
         {
             category.map(cat => (
-                <div className="hp-mod-card card-categories J_Categories J_NavChangeHook">
+                <div className="hp-mod-card card-categories J_Categories J_NavChangeHook" key={cat.name}>
                     <div className="hp-mod-card-header">
                         <h3 className="hp-mod-card-title">{cat.name}</h3>
                     </div>
@@ -17,7 +16,7 @@ const Category = ({category}) => {
                             <div className="card-categories-ul d-flex flex-wrap">
                                 {
                                     cat.departments.map(dept => (
-                                        <div className="card-categories-li hp-mod-card-hover">
+                                        <div className="card-categories-li hp-mod-card-hover" key={dept.department.title}>
                                             <a className="card-categories-li-content" href={dept.department.clickThrough.rawValue? buildUrl(dept.department.clickThrough.rawValue) 
                                                 : "#"
                                             }>
