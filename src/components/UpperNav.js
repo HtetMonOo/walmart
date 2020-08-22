@@ -3,8 +3,8 @@ import './UpperNav.css';
 
 const UpperNav = () => {
     return (
-        <div className="UpperNav">
-            <h4>Happy Shopping With Us <i className="fas fa-shopping-cart"></i></h4>
+        <div className="UpperNav d-flex justify-content-center align-items-center">
+            <h4>Walmart.com </h4><img src={require("../img/walmart-icon.png")}></img>
         </div>
     )
 }

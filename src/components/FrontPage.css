@@ -1,7 +1,11 @@
 .FrontPage {
     background-image: url('../img/—Pngtree—taobao vector creative technology online_1110799.jpg');
-    background-position-x: center;
-    background-size: contain;
+    background-position: center;
+    background-size: cover !important;
     background-repeat: no-repeat;
-    height: 1000px;
+    margin-top: 108px;
+}
+.FrontPage div {
+    height: calc(100vh - 100px);
+    width: 100%;
 }
