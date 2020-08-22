@@ -17,7 +17,7 @@ const LowerNav = ({departments}) => {
                                     departments.map( dep =>
                                         <li className="dropdown-item pointer"  key={dep.name}>
                                             <a className="dropdown-item" href={"#"+dep.name}> 
-                                                <span className="nav-label" >{dep.name}</span><span class="caret"></span></a> 
+                                                <span className="nav-label" >{dep.name}</span><span className="caret"></span></a> 
                                         </li>
                                     )
                                 }
@@ -30,7 +30,7 @@ const LowerNav = ({departments}) => {
                         </li>
                     </ul>
                     <div className="input-group">
-                        <input type="text" class="form-control" placeholder="Search for..."></input>
+                        <input type="text" className="form-control" placeholder="Search for..."></input>
                         <span className="input-group-btn">
                             <button className="btn btn-search" type="button"><i className="fa fa-search fa-fw"></i></button>
                         </span>

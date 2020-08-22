@@ -8,6 +8,7 @@ import Saving from './components/Saving';
 import Axios from 'axios';
 import { appendApiKey } from './utils';
 import Category from './components/Category';
+import Item_modal from './components/Item_modal';
 
 const App = () => {
 
@@ -44,9 +45,10 @@ const App = () => {
       <MainNav departments={departments}/>
       <FrontPage />
       <div className="Container">
-        <Saving departments={departments}/>
+        {/* <Saving departments={departments}/>
         <Item category="Back to school" products={products}/>
-        <Category category={departments} />
+        <Category category={departments} /> */}
+        <Item_modal></Item_modal>
       </div>
       
 

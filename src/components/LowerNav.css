@@ -7,6 +7,7 @@
     border-radius: 0;
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
+    height: 83%;
   }
   .btn-search:link, .btn-search:visited {
     color: #fff;
@@ -18,3 +19,10 @@
   .input-group {
       width: 500px;
   }
+.dropdown-menu {
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+}
+.dropdown-menu::-webkit-scrollbar {
+  display: none;
+}
