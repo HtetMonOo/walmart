@@ -1,41 +1,50 @@
 import React from 'react'
 import './LowerNav.css';
 
-const LowerNav = ({departments}) => {
+const LowerNav = ({categories, getCatalog}) => {
     return (
-        <div className="LowerNav">
-            <nav className="navbar navbar-expand-lg">
-                <div className="collapse navbar-collapse" id="navbarSupportedContent-333">
-                    <ul className="navbar-nav mr-auto">
-                        
-                        <li className="nav-item dropdown pointer">
-                            <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="true"> <span className="nav-label">Departments</span> <span className="caret"></span>
-                            </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink-333">
-                                {
-                                    departments.map( dep =>
-                                        <li className="dropdown-item pointer"  key={dep.name}>
-                                            <a className="dropdown-item" href={"#"+dep.name}> 
-                                                <span className="nav-label" >{dep.name}</span><span className="caret"></span></a> 
-                                        </li>
-                                    )
-                                }
-                            </ul>
-                        </li>
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Home
-                            <span className="sr-only">(current)</span>
-                            </a>
-                        </li>
+        <nav class="LowerNav navbar navbar-expand-lg navbar-dark special-color-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2"
+                aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+                <ul class="navbar-nav mr-auto">
+                    {
+                    categories.map( cat => (
+                    <li className="nav-item dropdown mega-dropdown active  position-static" key={cat.Category}>
+                        <a className="nav-link dropdown-toggle text-uppercase" id="navbarDropdownMenuLink2" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">{cat.Name}
+                        <span className="sr-only">(current)</span>
+                        </a>
+                            <div className="dropdown-menu mega-menu v-2 z-depth-1 special-color py-5 px-3 w-100"
+                            aria-labelledby="navbarDropdownMenuLink2">
+                            <div className="row w-100">
+                            {
+                                cat.ChildMenus.map( sub_cat => (
+                                    <div className="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
+                                        <h6 className="sub-title text-uppercase font-weight-bold white-text">{sub_cat.Name}</h6>
+                                        <ul className="list-unstyled">
+                                        {
+                                            sub_cat.ChildMenus.map( link => (
+                                                <li>
+                                                <a className="menu-item pl-0" href="#" onClick={getCatalog(link.Category)}>
+                                                    <i className="fas fa-caret-right pl-1 pr-3"></i>{link.Name}
+                                                </a>
+                                                </li>
+                                            ))
+                                        }   
+                                        </ul>
+                                    </div>
+                                ))
+                            }   
+                            </div>     
+                        </div>
+                    </li>
+                         ))
+                        }
                     </ul>
-                    <div className="input-group">
-                        <input type="text" className="form-control" placeholder="Search for..."></input>
-                        <span className="input-group-btn">
-                            <button className="btn btn-search" type="button"><i className="fa fa-search fa-fw"></i></button>
-                        </span>
-                    </div>
-                    
                     <ul className="navbar-nav ml-auto nav-flex-icons">
                     <li className="nav-item">
                         <a className="nav-link waves-effect waves-light">
@@ -55,9 +64,8 @@ const LowerNav = ({departments}) => {
                         </a>
                         <div className="dropdown-menu dropdown-menu-right dropdown-default"
                         aria-labelledby="navbarDropdownMenuLink-333">
-                        <a className="dropdown-item" href="#">Action</a>
-                        <a className="dropdown-item" href="#">Another action</a>
-                        <a className="dropdown-item" href="#">Something else here</a>
+                        <a className="dropdown-item" href="#">Sign in</a>
+                        <a className="dropdown-item" href="#">Sign up</a>
                         </div>
                     </li>
 
@@ -66,10 +74,9 @@ const LowerNav = ({departments}) => {
                         <i className="fas fa-shopping-cart"></i>
                         </a>
                     </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+            </ul>
+            </div>
+        </nav>
     )
 }
 

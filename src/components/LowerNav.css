@@ -1,28 +1,10 @@
 .nav-link {
     color: #95A6FF !important;
 }
-.btn-search {
-    background: #FFC220;
-    color: #fff;
-    border-radius: 0;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-    height: 83%;
-  }
-  .btn-search:link, .btn-search:visited {
-    color: #fff;
-  }
-  .btn-search:active, .btn-search:hover {
-    background: #041e42;
-    color: #fff;
-  }
-  .input-group {
-      width: 500px;
-  }
 .dropdown-menu {
-  height: calc(100vh - 100px);
-  overflow-y: scroll;
+  width: calc(100vw - 20px);
 }
 .dropdown-menu::-webkit-scrollbar {
   display: none;
 }
+.dropdown:hover .dropdown-menu {display: block;}

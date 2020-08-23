@@ -2,7 +2,7 @@ import React from 'react'
 import './Saving.css';
 import { buildUrl } from '../utils';
 
-const Saving = ({departments}) => {
+const Saving = ({categories}) => {
     
     return (
         <div className="Saving m-2">
@@ -13,12 +13,13 @@ const Saving = ({departments}) => {
             
             <div className="holder">
                 {
-                    departments.map(dept => (
-                        dept.name === "Savings spotlight" &&
-                        dept.departments.map(dep => (
-                            dep.department.title !== "Savings spotlight" &&
-                                <a className="card m-1 p-2" key={dep.department.title} href={dep.department.clickThrough.rawValue? buildUrl(dep.department.clickThrough.rawValue) : "#"}>{dep.department.title}</a>
-                            
+                    categories.map(cat => (
+                        cat.Category === "sale-main" &&
+                        cat.ChildMenus.map(child_cat => (
+                            child_cat.Category === "Features-Sale" &&
+                            child_cat.ChildMenus.map( link => (
+                                <a className="card m-1 p-2" key={link.Category}>{link.Name}</a>
+                            ))  
                         ))
                     ))
                 }

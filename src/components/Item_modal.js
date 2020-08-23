@@ -1,29 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Item_modal.css';
-import { apendApiKey, appendApiKey } from '../utils';
-import Axios from 'axios';
 
-const Item_modal = ({productId, price}) => {
+const Item_modal = ({onHide, detail, price}) => {
+    
 
-    const [ detail, setDetail ] = useState();
-    const url = appendApiKey("products/get-details&usItemId="+productId);
-
-  useEffect(() => {
-      fetchData();
-  }, [])
-
-  const fetchData = async() => {
-      try{
-          const res_cat = await Axios.get(url);
-          setDetail(res_cat.data.productByProductId);
-      }catch{
-          setDetail("");
-      }
-  }
     return (
-        <div className="Item_modal">
-
-            <div className="modal bd-example-modal-lg" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div className="Item_modal">
                 <div className="modal-dialog modal-lg modal-dialog-centered">
                     <div className="modal-content">
                     <div className="modal-header">
@@ -44,14 +26,14 @@ const Item_modal = ({productId, price}) => {
                     
                     <div className="carousel-inner" role="listbox">
                         {
-                            detail.imageList.map( img => (
+                            // detail.imageList.map( img => (
                                 <div className="carousel-item active">
                                     <div className="view">
-                                        <img className="img-fluid" src={img.imageAssetSizeUrls.default}></img>
+                                        <img className="img-fluid" src="https://static-01.shop.com.mm/p/20a41b8a6596bf119a05c9fc33e7cbe2.jpg"></img>
                                         <div className="mask rgba-black-light"></div>
                                     </div>
                                 </div>
-                            ))
+                            // ))
                         }
                     </div>
                     <a className="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
@@ -65,11 +47,11 @@ const Item_modal = ({productId, price}) => {
                 </div>
                 <div className="col-md-7">
                 <div className="card-body d-flex flex-column align-items-start">
-                    <h5 className="card-title text-align-left">{detail.productName}</h5>
-                    <small className="text-muted">Brand : {detail.productAttributes.brand}</small>
-                    <p className="card-text text-align-left">{detail.shortDescription}</p>
-                    <h3 className="card-text text-align-left">USD {price}</h3>
-                    <p className="card-text text-muted">Rating {detail.productAttributes.averageRating}/5</p>
+                    <h5 className="card-title text-align-left">detail.productName</h5>
+                    <small className="text-muted">Brand : detail.productAttributes.brand</small>
+                    <p className="card-text text-align-left">detail.shortDescription</p>
+                    <h3 className="card-text text-align-left">USD price</h3>
+                    <p className="card-text text-muted">Rating detail.productAttributes.averageRating/5</p>
                     <div>
                         <button type="button" className="btn btn-yellow">Buy Now</button>
                         <button type="button" className="btn btn-blue">Add To Card</button>
@@ -82,13 +64,12 @@ const Item_modal = ({productId, price}) => {
         </div>
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-secondary" onClick={onHide}>Close</button>
         <button type="button" className="btn btn-primary">Save changes</button>
       </div>
     </div> 
   </div>
 </div>  
-        </div>
     )
 }
 

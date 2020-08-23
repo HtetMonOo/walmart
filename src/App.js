@@ -6,49 +6,53 @@ import MainNav from './components/MainNav';
 import Item from './components/Item';
 import Saving from './components/Saving';
 import Axios from 'axios';
-import { appendApiKey } from './utils';
+import { appendApiKey, getProducts } from './utils';
 import Category from './components/Category';
-import Item_modal from './components/Item_modal';
 
 const App = () => {
 
-  const [ departments, setDepartments ] = useState([]);
-  const url_cat = appendApiKey("departments/list");
-  const url_prod=appendApiKey("products/list");
+  const [ categories, setCategories ] = useState([]);
+  const url_cat = appendApiKey("categories/list");
   const [ products, setProducts ] = useState([]);
+  const [ showCatalog, setShowCatalog ] = useState(false);
 
   useEffect(() => {
-      fetchDepartments();
-      fetchProducts();
+      fetchCategories();
   }, [])
 
-  const fetchDepartments = async() => {
+  const fetchCategories = async() => {
       try{
           const res_cat = await Axios.get(url_cat);
-          setDepartments(res_cat.data.departments);
+          setCategories(res_cat.data.ChildMenus);
+          console.log(res_cat.data.ChildMenus);
       }catch{
-          setDepartments([]);
+          setCategories([]);
       }
   }
 
-  const fetchProducts = async() => {
+  const fetchProducts = async(category) => {
+    const url_prod=getProducts("products/list",category);
     try {
       const res_prod = await Axios.get(url_prod);
-      setProducts(res_prod.data.items);
-      console.log(res_prod.data.items);
+      setProducts(res_prod.data);
+      console.log(res_prod.data);
     }catch {
       setProducts([]);
     }
   }
+
+  const getCatalog = (category) => {
+    fetchProducts(category);
+    setShowCatalog(true);
+  }
   return (
     <div className="App">
-      <MainNav departments={departments}/>
+      <MainNav categories={categories} getCatalog={getCatalog()}/>
       <FrontPage />
       <div className="Container">
-        {/* <Saving departments={departments}/>
-        <Item category="Back to school" products={products}/>
-        <Category category={departments} /> */}
-        <Item_modal></Item_modal>
+        <Saving categories={categories}/>
+        { showCatalog && <Item products={products}/> }
+        {/* <Category categories={categories} /> */}
       </div>
       
 

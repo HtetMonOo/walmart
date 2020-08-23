@@ -4,11 +4,11 @@ import UpperNav from './UpperNav';
 import LowerNav from './LowerNav';
 
 
-const MainNav = ({departments}) => {
+const MainNav = ({categories}) => {
     return (
         <div className="MainNav"> 
             <UpperNav />
-            <LowerNav departments={departments}/>
+            <LowerNav categories={categories}/>
         </div>
     )
 }
