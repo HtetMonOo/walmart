@@ -1,39 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, componentDidMount } from 'react';
 import './Item.css';
-import { appendApiKey, buildUrl } from "../utils";
+import { buildUrl } from "../utils";
 import Axios from 'axios';
-import Item_modal from './Item_modal';
+import { getProducts } from '../utils';
 
-const Item = ({products}) => {
+const Item = ({category}) => {
 
-    const [ showModal, setShowModal ] = useState(false);
+    const [ fetching, setFetching ] = useState(true);
     
-    const [ detail, setDetail ] = useState();
+    const [ products, setProducts ] = useState([]);
+    const url=getProducts(category);
+    const promise = Axios.get(url);
 
-    // useEffect(() => {
-    //     showProduct(id);
-    // }, [])
-    // const showProduct = async(id) => {
-    //     console.log(showModal)
-    //     const url = appendApiKey("products/get-details&usItemId="+id);
-    //     try{
-    //         const res_cat = await Axios.get(url);
-    //         setDetail(res_cat.data.productByProductId);
-    //     }catch{
-    //         setDetail("");
-    //     }
-    //         setShowModal(true);
-        
-    // }
-    
+    useEffect(() => {
+        promise.then( res => {
+            setProducts(res.data);
+            console.log(res.data);
+            setFetching(false);
+        }
+    )
+    }, [])
+
     return (
-        <div className="Item mt-3">
-            <div className="card-title">{products.CategoryDisplayName}</div>
+        <>
+        {
+            fetching ? <h1>Loading...</h1> :
+            <div className="Item">
+            <h3 className="title w-100">{products.CategoryDisplayName}</h3>
             <div className="container">
             <div className="row">
             {
                 products.CatalogProducts.map( product => (
-                    <div className="col-6 col-md-4 col-lg-3 mb-4 d-flex align-items-stretch" key={product.usItemId}>
+                    <div className="col-6 col-md-4 col-lg-2 mb-4 d-flex align-items-stretch" key={product.usItemId}>
                         <a className="card m-0 pointer" href={product.ProductShareLinkUrl}>
                         <div className="view overlay">
                             <img className="card-img-top" src={buildUrl(product.ImageFilename)} alt="Card image cap"></img>
@@ -47,17 +45,14 @@ const Item = ({products}) => {
                             <small className=""><i className="fas fa-star"></i> 4/5 </small>
                         </div>
                         </a>
-                        {/* {
-                            showModal ?
-                            <Item_modal onHide={() => setShowModal(false)} detail={detail} price={product.primaryOffer.offerPrice}></Item_modal>
-                            : " "
-                        } */}
-                        </div> 
+                    </div> 
                 ))
             }
             </div>
-            </div>
+        </div> 
         </div>
+        }
+         </>
     )
 }
 

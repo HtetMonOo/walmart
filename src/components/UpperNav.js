@@ -1,9 +1,10 @@
 import React from 'react'
 import './UpperNav.css';
 
-const UpperNav = () => {
+const UpperNav = ({name}) => {
     return (
-        <div className="UpperNav d-flex justify-content-center align-items-center">
+        <div className="UpperNav d-flex justify-content-center align-items-center" id="mainnav">
+            <h3>{name}</h3>
             <h4>Walmart.com </h4><img src={require("../img/walmart-icon.png")}></img>
             <div className="input-group">
                         <input type="text" className="form-control" placeholder="Search for..."></input>

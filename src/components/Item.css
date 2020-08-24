@@ -1,7 +1,9 @@
 .Item {
-    width: 1000px;
+    width: 100vw;
     background-color: #F8F9FA;
     color: #041e42;
+    margin: auto !important;
+    margin-top: 120px !important;
 }
 .card-footer {
     background: inherit;

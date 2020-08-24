@@ -7,11 +7,7 @@
     height: 50px;
 }
 .btn-search {
-    background: #FFC220;
     color: #fff;
-    border-radius: 0;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
     height: 83%;
   }
   .btn-search:link, .btn-search:visited {
@@ -23,4 +19,7 @@
   }
   .input-group {
       width: 500px;
+  }
+  #input {
+    border-radius: 4px !important;
   }

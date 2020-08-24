@@ -15,6 +15,10 @@
         border-radius: 70px;
         border: 2px solid #041e42;
         padding: 0 70px;
+        margin: auto !important;
+        margin-top: 10px !important;
+        /* margin-left: calc(100vw - 600px);
+        margin-right: calc(100vw - 600px); */
     }
 
     .holder {
@@ -50,6 +54,7 @@
 
     .holder>.card:hover{
         transform: scale(1.05);
+        color: #fff;
         /* box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06); */
    }
 

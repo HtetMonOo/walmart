@@ -3,17 +3,17 @@ import './LowerNav.css';
 
 const LowerNav = ({categories, getCatalog}) => {
     return (
-        <nav class="LowerNav navbar navbar-expand-lg navbar-dark special-color-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2"
+        <nav className="LowerNav navbar navbar-expand-lg navbar-dark special-color-dark">
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2"
                 aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent2">
-                <ul class="navbar-nav mr-auto">
+            <div className="collapse navbar-collapse" id="navbarSupportedContent2">
+                <ul className="navbar-nav mr-auto">
                     {
                     categories.map( cat => (
-                    <li className="nav-item dropdown mega-dropdown active  position-static" key={cat.Category}>
+                    <li className="nav-item dropdown mega-dropdown active  position-static" key={cat.Name}>
                         <a className="nav-link dropdown-toggle text-uppercase" id="navbarDropdownMenuLink2" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">{cat.Name}
                         <span className="sr-only">(current)</span>
@@ -23,15 +23,15 @@ const LowerNav = ({categories, getCatalog}) => {
                             <div className="row w-100">
                             {
                                 cat.ChildMenus.map( sub_cat => (
-                                    <div className="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
+                                    <div className="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4" key={sub_cat.Name}>
                                         <h6 className="sub-title text-uppercase font-weight-bold white-text">{sub_cat.Name}</h6>
                                         <ul className="list-unstyled">
                                         {
                                             sub_cat.ChildMenus.map( link => (
-                                                <li>
-                                                <a className="menu-item pl-0" href="#" onClick={getCatalog(link.Category)}>
+                                                <li key={link.Name}>
+                                                <div className="menu-item pl-0" onClick={()=>{getCatalog(link.Category)}}>
                                                     <i className="fas fa-caret-right pl-1 pr-3"></i>{link.Name}
-                                                </a>
+                                                </div>
                                                 </li>
                                             ))
                                         }   
