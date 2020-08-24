@@ -2,10 +2,10 @@ import React from 'react'
 import './Saving.css';
 import { buildUrl } from '../utils';
 
-const Saving = ({categories}) => {
+const Saving = ({categories, getCatalog}) => {
     
     return (
-        <div className="Saving m-2">
+        <div className="Saving centerDiv">
             <div className="d-flex justify-content-between"> 
                 <h4 className="text-left p-2 m-0 font-weight-bold">Saving Spotlight <i class="fas fa-comment-dollar"></i></h4>
                 <h5 className="text-right p-2"><i class="fas fa-angle-double-left"></i> &nbsp; <i class="fas fa-angle-double-right"></i></h5>
@@ -18,7 +18,7 @@ const Saving = ({categories}) => {
                         cat.ChildMenus.map(child_cat => (
                             child_cat.Category === "Features-Sale" &&
                             child_cat.ChildMenus.map( link => (
-                                <a className="card m-1 p-2" key={link.Category}>{link.Name}</a>
+                                <a className="card m-1 p-2" key={link.Key} onClick={()=>getCatalog(link.Category)}>{link.Name}</a>
                             ))  
                         ))
                     ))

@@ -31,7 +31,7 @@ const Item = ({category}) => {
             <div className="row">
             {
                 products.CatalogProducts.map( product => (
-                    <div className="col-6 col-md-4 col-lg-2 mb-4 d-flex align-items-stretch" key={product.usItemId}>
+                    <div className="col-6 col-md-4 col-lg-2 mb-4 d-flex align-items-stretch" key={product.ItemCode}>
                         <a className="card m-0 pointer" href={product.ProductShareLinkUrl}>
                         <div className="view overlay">
                             <img className="card-img-top" src={buildUrl(product.ImageFilename)} alt="Card image cap"></img>

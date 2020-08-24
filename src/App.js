@@ -38,7 +38,7 @@ const App = () => {
       <MainNav categories={categories} getCatalog={getCatalog} />
       {
         showCatalog ? <Item category={cat_name}></Item> :
-          <Container categories={categories}></Container>  
+          <Container categories={categories} getCatalog={getCatalog} ></Container>  
       }
     </div>
   )
