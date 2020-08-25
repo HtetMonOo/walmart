@@ -42,7 +42,7 @@ const Item = ({category}) => {
                         </div>
                         <div className="card-footer d-flex justify-content-between border-0">
                             <small className="text-warning">USD  {product.ListPrice}</small>
-                            <small className=""><i className="fas fa-star"></i> 4/5 </small>
+                            <small className=""><i className="fas fa-star"></i>4/5</small>
                         </div>
                         </a>
                     </div> 

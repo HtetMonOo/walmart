@@ -25,7 +25,7 @@ const MenNewArrival = ({getCatalog}) => {
         <div className="hp-mod-card card-categories J_Categories J_NavChangeHook">
                     <div className="hp-mod-card-header d-flex justify-content-between">
                         <h3>New Arrivals For Men</h3>
-                        <a className="button" onClick={()=>getCatalog("mens-new-arrivals")}>See More &#187; </a>
+                        <a onClick={()=>getCatalog("mens-new-arrivals")}>See More &#187; </a>
                     </div>
                         <div className="hp-mod-card-content J_CategoriesItems">
                             <div className="card-categories-ul d-flex flex-wrap">
