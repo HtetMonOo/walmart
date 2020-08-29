@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import './font/css/all.css';
-import Item from './components/Item';
 import MainNav from './components/MainNav';
 import Axios from 'axios';
 import { appendApiKey, searchProducts, getProducts } from './utils';
-import Container from './components/Container';
-import Product from './components/Product';
 import SideNav from './components/SideNav';
 
 const App = () => {
@@ -26,15 +23,16 @@ const App = () => {
     size: '',
     price: '250',
   });
-  const [ loading, setLoading ] = useState(false);
+  const [ loading, setLoading ] = useState(true);
+  const [ home, setHome ] = useState(true);
 
 
   useEffect(() => {
       fetchCategories();
       fetchNewArrival();
-      fetchBestSeller();
-      fetchInstock();
-      fetchPromo();
+      // fetchBestSeller();
+      // fetchInstock();
+      // fetchPromo();
   }, [])
 
   const fetchCategories = async() => {
@@ -51,7 +49,7 @@ const App = () => {
   }
 
     const fetchNewArrival = async() => {
-      var url_new = getProducts("new-arrivals")+"&pagesize=10";
+      var url_new = getProducts("new-arrivals")+"&pagesize=16";
       console.log(url_new);
         try {
             await Axios.get(url_new).then( res => {
@@ -65,7 +63,7 @@ const App = () => {
     }
 
     const fetchBestSeller = async() => {
-      var url_best = getProducts("promo-best-sellers-app")+"&pagesize=10";
+      var url_best = getProducts("promo-best-sellers-app")+"&pagesize=16";
         try {
             await Axios.get(url_best).then( res => {
                 setBestSeller(res.data);
@@ -77,7 +75,7 @@ const App = () => {
     }
 
     const fetchInstock = async() => {
-      var url_instock = getProducts("backinstock")+"&pagesize=10";
+      var url_instock = getProducts("backinstock")+"&pagesize=16";
         try {
             await Axios.get(url_instock).then( res => {
                 setInstock(res.data);
@@ -89,7 +87,7 @@ const App = () => {
     }
 
     const fetchPromo = async() => {
-      var url_promo = getProducts("promo-basics")+"&pagesize=10";
+      var url_promo = getProducts("promo-basics")+"&pagesize=16";
       console.log(url_promo);
         try {
             await Axios.get(url_promo).then( res => {
@@ -103,9 +101,9 @@ const App = () => {
 
   const getCatalog = (category) => {
     setCat_name(category);
-    document.getElementById("dropdown").style.display = "none";
+    setHome(false);
+    setShowSearch(false);
     setShowCatalog(true);
-    
   }
 
   const search = (query) => {
@@ -114,7 +112,10 @@ const App = () => {
     Axios.get(url_search).then(res => {
       console.log(res.data);
       setSearchProd(res.data.response);
+      setShowCatalog(false);
+      setHome(false);
       setShowSearch(true);
+      
       }
     )
   }
@@ -141,6 +142,12 @@ const App = () => {
       }
       console.log(filterValue);
     }
+
+    const gohome = () => {
+      setShowSearch(false);
+    setShowCatalog(false);
+    setHome(true);
+    }
   
   return (
     <div className="App">
@@ -158,7 +165,7 @@ const App = () => {
         </div>
       </div> }
       
-      <MainNav categories={categories} getCatalog={getCatalog} search={search} showSidenav={showSidenav}/>
+      <MainNav categories={categories} getCatalog={getCatalog} search={search} showSidenav={showSidenav} gohome={gohome}/>
       <SideNav 
         showSearch={showSearch}
         search={searchProd}
@@ -173,6 +180,7 @@ const App = () => {
         instock={instock}
         bestSeller={bestSeller}
         promo={promo}
+        home={home}
       />
       
     </div>

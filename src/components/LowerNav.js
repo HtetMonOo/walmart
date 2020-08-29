@@ -1,7 +1,7 @@
 import React from 'react'
 import './LowerNav.css';
 
-const LowerNav = ({categories, getCatalog, showSidenav}) => {
+const LowerNav = ({categories, getCatalog, showSidenav, gohome}) => {
     return (
         <nav className="LowerNav navbar navbar-expand-lg navbar-dark special-color-dark">
 
@@ -10,6 +10,12 @@ const LowerNav = ({categories, getCatalog, showSidenav}) => {
                     <li className="nav-item" >
                         <a className="nav-link waves-effect waves-light" onClick={()=>showSidenav()}>
                         <i className="fas fa-filter"></i>
+                        </a>
+                    </li>
+
+                    <li className="nav-item" >
+                        <a className="nav-link waves-effect waves-light" onClick={()=>gohome()}>
+                        <i className="fas fa-home"></i>
                         </a>
                     </li>
                     

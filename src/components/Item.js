@@ -5,10 +5,9 @@ import Axios from 'axios';
 import { getProducts } from '../utils';
 
 const Item = ({category, filterValue}) => {
-
-    //const [ filter, setFilter ] = useState({});
     
     const [ products, setProducts ] = useState([]);
+    const [ fetching, setFetching ] = useState("true");
     const url=getProducts(category);
 
     useEffect(() => {
@@ -20,7 +19,7 @@ const Item = ({category, filterValue}) => {
             Axios.get(url).then(res => {
                 setProducts(res.data);
                 console.log(res.data);
-                //setFetching(false);
+                setFetching(false);
             })
         }catch{
             setProducts([]);
@@ -29,6 +28,21 @@ const Item = ({category, filterValue}) => {
 
     return (
         <>
+        {
+            fetching && 
+            <div className="loader">
+                <div className="wrapper1">
+                <span className="circle circle-1"></span>
+                <span className="circle circle-2"></span>
+                <span className="circle circle-3"></span>
+                <span className="circle circle-4"></span>
+                <span className="circle circle-5"></span>
+                <span className="circle circle-6"></span>
+                <span className="circle circle-7"></span>
+                <span className="circle circle-8"></span>
+                </div>
+            </div>
+        }
             <div className="Item">
             <h3 className="title w-100">{products.CategoryDisplayName}</h3>
             <div className="container">

@@ -7,7 +7,6 @@ const MenNewArrival = ({getCatalog, products}) => {
     //const [ fetching, setFetching ] = useState(true);
 
 
-
     return (
         <div className="WomenNewArrival centerDiv w-90"> 
         {
@@ -15,7 +14,7 @@ const MenNewArrival = ({getCatalog, products}) => {
            ( <div className="hp-mod-card card-categories J_Categories J_NavChangeHook">
             <div className="hp-mod-card-header d-flex justify-content-between">
                 <h3>{products.CategoryDisplayName}</h3>
-                <a className="btn" role="button" href="#" onClick={()=>getCatalog(products.Category)}>See More &#187; </a>
+                <a className="btn" role="button" href="#" onClick={()=>getCatalog(products.CategoryName)}>See More &#187; </a>
             </div>
                 <div className="hp-mod-card-content J_CategoriesItems">
                     <div className="card-categories-ul d-flex flex-wrap">
