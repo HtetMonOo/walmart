@@ -5,7 +5,7 @@ import { buildUrl } from '../utils';
 const Saving = ({categories, getCatalog}) => {
     
     return (
-        <div className="Saving centerDiv">
+        <div className="Saving centerDiv w-90">
             <div className="d-flex justify-content-between"> 
                 <h4 className="text-left p-2 m-0 font-weight-bold">Saving Spotlight <i class="fas fa-comment-dollar"></i></h4>
                 <h5 className="text-right p-2"><i class="fas fa-angle-double-left"></i> &nbsp; <i class="fas fa-angle-double-right"></i></h5>

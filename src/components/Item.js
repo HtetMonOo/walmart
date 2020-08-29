@@ -1,35 +1,40 @@
-import React, { useState, useEffect, componentDidMount } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Item.css';
 import { buildUrl } from "../utils";
 import Axios from 'axios';
 import { getProducts } from '../utils';
 
-const Item = ({category}) => {
+const Item = ({category, filterValue}) => {
 
-    const [ fetching, setFetching ] = useState(true);
+    //const [ filter, setFilter ] = useState({});
     
     const [ products, setProducts ] = useState([]);
     const url=getProducts(category);
-    const promise = Axios.get(url);
 
     useEffect(() => {
-        promise.then( res => {
-            setProducts(res.data);
-            console.log(res.data);
-            setFetching(false);
+        fetchData();
+    },[])
+
+    const fetchData = async() => {
+        try{
+            Axios.get(url).then(res => {
+                setProducts(res.data);
+                console.log(res.data);
+                //setFetching(false);
+            })
+        }catch{
+            setProducts([]);
         }
-    )
-    }, [])
+    }
 
     return (
         <>
-        {
-            fetching ? <h1>Loading...</h1> :
             <div className="Item">
             <h3 className="title w-100">{products.CategoryDisplayName}</h3>
             <div className="container">
             <div className="row">
             {
+                products.length !== 0 && products.CatalogProducts.length !== 0 &&
                 products.CatalogProducts.map( product => (
                     <div className="col-6 col-md-4 col-lg-2 mb-4 d-flex align-items-stretch" key={product.ItemCode}>
                         <a className="card m-0 pointer" href={product.ProductShareLinkUrl}>
@@ -51,7 +56,6 @@ const Item = ({category}) => {
             </div>
         </div> 
         </div>
-        }
          </>
     )
 }

@@ -5,7 +5,7 @@ import { buildUrl } from "../utils";
 const Category = ({category}) => {
 
     return (
-        <div className="category">
+        <div className="Category">
         {
             category.map(cat => (
                 <div className="hp-mod-card card-categories J_Categories J_NavChangeHook" key={cat.name}>

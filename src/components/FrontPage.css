@@ -3,7 +3,6 @@
     background-position: center;
     background-size: cover !important;
     background-repeat: no-repeat;
-    margin-top: 108px;
 }
 .FrontPage div {
     height: calc(100vh - 100px);

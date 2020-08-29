@@ -10,7 +10,7 @@
   padding-top: 10px; 
 }
 .btn-search {
-    color: #fff;
+    color: #F0F0F0;
     border: transparent;
     
   }
@@ -28,4 +28,5 @@
   #input {
     border-radius: 4px !important;
     border: transparent;
+    background: #F0F0F0;
   }

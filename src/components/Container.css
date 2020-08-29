@@ -1,11 +1,7 @@
 
-.Container {
-    width: 100vw;
-  }
-  .hp-mod-card {
+.hp-mod-card {
     display: block;
     clear: both;
-    width: 1188px;
     padding-top: 24px;
     margin: auto;
 }
