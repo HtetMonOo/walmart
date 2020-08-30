@@ -43,10 +43,10 @@ const LowerNav = ({categories, getCatalog, showSidenav, gohome}) => {
                     categories.map( cat => (
                         
                     <li className="nav-item dropdown mega-dropdown active  position-static" key={cat.Key}>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2"
+                        {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2"
                             aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
-                        </button>
+                        </button> */}
                         <a className="nav-link dropdown-toggle text-uppercase" id="navbarDropdownMenuLink2" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">{cat.Name}
                         <span className="sr-only">(current)</span>

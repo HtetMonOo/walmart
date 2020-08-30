@@ -30,9 +30,9 @@ const App = () => {
   useEffect(() => {
       fetchCategories();
       fetchNewArrival();
-      // fetchBestSeller();
-      // fetchInstock();
-      // fetchPromo();
+      fetchBestSeller();
+      fetchInstock();
+      fetchPromo();
   }, [])
 
   const fetchCategories = async() => {

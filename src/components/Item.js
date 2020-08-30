@@ -8,6 +8,18 @@ const Item = ({category, filterValue}) => {
     
     const [ products, setProducts ] = useState([]);
     const [ fetching, setFetching ] = useState("true");
+    const [ filter, setFilter ] = useState({
+        color: '',
+        size: '',
+        price: '250',
+    });
+    // setFilter({
+    //     ...filter,
+    //     color: filterValue.color,
+    //     size: filterValue.size,
+    //     price: filterValue.price,
+    // })
+    //const url=getProducts(category)+`&color=${filter.color}&size=${filter.size}&price=${filter.price}`;
     const url=getProducts(category);
 
     useEffect(() => {
@@ -45,6 +57,7 @@ const Item = ({category, filterValue}) => {
         }
             <div className="Item">
             <h3 className="title w-100">{products.CategoryDisplayName}</h3>
+            <p className="text-align-left">{products.CategoryDescription}</p>
             <div className="container">
             <div className="row">
             {
@@ -57,7 +70,7 @@ const Item = ({category, filterValue}) => {
                         </div>
     
                         <div className="card-body p-1">
-                            <p className="card-title">{product.DisplayName}</p>
+                            <p className="small">{product.DisplayName}</p>
                         </div>
                         <div className="card-footer d-flex justify-content-between border-0">
                             <small className="text-warning">USD  {product.ListPrice}</small>
@@ -68,6 +81,7 @@ const Item = ({category, filterValue}) => {
                 ))
             }
             </div>
+            <div>{products.CategoryCustomerNote}</div>
         </div> 
         </div>
          </>
